@@ -29,12 +29,16 @@ function App() {
     },
   ];
 
+  function addExpenseHandler(expense) {
+    console.log('In App.js')
+    console.log(expense)
+  }
+
   return (
-    <div>
-      <NewExpense />
-      <Expenses items={expenses} />
-    </div>
+    <>
+      <NewExpense addExpenseHandler={addExpenseHandler} />
+      <Expenses expenses={expenses} />
+    </>
   );
 }
-
 export default App;
