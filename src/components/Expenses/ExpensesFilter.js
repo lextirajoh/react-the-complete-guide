@@ -1,6 +1,6 @@
 import './ExpensesFilter.css';
 
-function ExpensesFilter({filteredYear, handleShowYear}) {
+export default function ExpensesFilter({filteredYear, handleShowYear}) {
   function handleDropdownYear(e) {
     handleShowYear(e.target.value)
   }
@@ -19,5 +19,3 @@ function ExpensesFilter({filteredYear, handleShowYear}) {
     </div>
   );
 }
-
-export default ExpensesFilter;

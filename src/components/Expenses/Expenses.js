@@ -4,11 +4,30 @@ import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
 import './Expenses.css';
 
-function Expenses({ expenses }) {
-  const [filteredYear, setFilteredYear] = useState('2020');
+export default function Expenses({ expenses }) {
+  const [filteredYear, setFilteredYear] = useState('');
 
   function handleShowYear(selectedYear) {
     setFilteredYear(selectedYear);
+  }
+
+  const filteredExpenses = expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  // variabele voor de JSX code (conditional content)
+  let expensesContent = <p>No expenses found.</p>;
+
+  //  als filteredExpenses wel minimaal 1 item bevat dan return de JSX
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+        key={expense.id}
+      />
+    ));
   }
 
   return (
@@ -18,16 +37,8 @@ function Expenses({ expenses }) {
           filteredYear={filteredYear}
           handleShowYear={handleShowYear}
         />
-        {expenses.map((expense) => (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {expensesContent}
       </Card>
     </div>
   );
 }
-
-export default Expenses;
