@@ -33,6 +33,7 @@ export default function App() {
   const [expenses, setExpenses] = useState(initialExpenses);
 
   function addExpenseHandler(expense) {
+    // voeg nieuwe expense aan huidige state toe
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
