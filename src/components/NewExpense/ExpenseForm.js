@@ -23,7 +23,7 @@ export default function ExpenseForm({ saveExpenseDataHandler, handleCancelForm }
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
