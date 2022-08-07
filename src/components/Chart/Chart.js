@@ -1,16 +1,16 @@
 import React from 'react';
-import ChartBar from './Chartbar';
+import ChartBar from './ChartBar';
 import './Chart.css';
 
-export default function Chart({ dataPoints }) {
+export default function Chart(props) {
   return (
     <div className="chart">
-      {dataPoints.map((dataPoint) => (
+      {props.dataPoints.map((dataPoint) => (
         <ChartBar
-          value={dataPoint.value}
-          maxvalue={null}
-          label={dataPoint.label}
-          key={dataPoint.label}
+          value={props.dataPoint.value}
+          maxValue={null}
+          label={props.dataPoint.label}
+          key={props.dataPoint.label}
         />
       ))}
     </div>
