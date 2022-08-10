@@ -3,14 +3,14 @@ import React from 'react';
 import CourseGoalItem from '../CourseGoalItem/CourseGoalItem';
 import './CourseGoalList.css';
 
-const CourseGoalList = props => {
+export default function CourseGoalList({courseGoals, deleteItemHandler}) {
   return (
     <ul className="goal-list">
-      {props.items.map(goal => (
+      {courseGoals.map(goal => (
         <CourseGoalItem
           key={goal.id}
           id={goal.id}
-          onDelete={props.onDeleteItem}
+          onDelete={deleteItemHandler}
         >
           {goal.text}
         </CourseGoalItem>
@@ -18,5 +18,3 @@ const CourseGoalList = props => {
     </ul>
   );
 };
-
-export default CourseGoalList;

@@ -3,27 +3,38 @@ import React, { useState } from 'react';
 import Button from '../../UI/Button/Button';
 import './CourseInput.css';
 
-const CourseInput = props => {
+export default function CourseInput({ addGoalHandler }) {
   const [enteredValue, setEnteredValue] = useState('');
+  const [isValid, setIsValid] = useState(true);
 
-  const goalInputChangeHandler = event => {
+  function goalInputChangeHandler(event) {
+    if(event.target.value.trim().length !== 0) {
+      setIsValid(true)
+    }
     setEnteredValue(event.target.value);
-  };
+  }
 
-  const formSubmitHandler = event => {
+  function formSubmitHandler(event) {
     event.preventDefault();
-    props.onAddGoal(enteredValue);
-  };
+    // versturen met lege input zet isValid (false) en stopt de functie (return)
+    if (enteredValue.trim().length === 0) {
+      setIsValid(false);
+      return;
+    }
+    addGoalHandler(enteredValue);
+  }
 
   return (
     <form onSubmit={formSubmitHandler}>
       <div className="form-control">
-        <label>Course Goal</label>
-        <input type="text" onChange={goalInputChangeHandler} />
+        <label style={{ color: !isValid ? 'red' : 'black' }}>Course Goal</label>
+        <input
+          style={{ borderColor: !isValid ? 'red' : 'black', background: !isValid ? 'salmon' : '#ccc' }}
+          type="text"
+          onChange={goalInputChangeHandler}
+        />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>
   );
-};
-
-export default CourseInput;
+}
