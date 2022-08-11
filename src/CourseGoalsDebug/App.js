@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { v4 as uuid } from 'uuid';
 import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
 import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
 import './App.css';
@@ -13,7 +13,7 @@ const App = () => {
   const addGoalHandler = (enteredText) => {
     setCourseGoals((prevGoals) => {
       const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: 'goal1' });
+      updatedGoals.unshift({ text: enteredText, id: uuid() });
       return updatedGoals;
     });
   };
