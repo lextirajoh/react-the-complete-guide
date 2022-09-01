@@ -8,7 +8,7 @@ const Counter = () => {
   function incrementHandler() {
     dispatch({ type: 'increment' });
   }
- 
+
   function increaseHandler() {
     dispatch({ type: 'increase', amount: 5 });
   }
