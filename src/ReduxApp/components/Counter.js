@@ -29,7 +29,7 @@ const Counter = () => {
         <button onClick={decrementHandler}>Decrement</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
-    </main>
+    </main> 
   );
 };
 
